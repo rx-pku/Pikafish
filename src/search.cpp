@@ -58,6 +58,10 @@ constexpr u64 NODES_LIMIT_OUTPUT = 10'000'000;
 constexpr int SEARCHEDLIST_CAPACITY = 32;
 using SearchedList                  = ValueList<Move, SEARCHEDLIST_CAPACITY>;
 
+bool fast_win_enabled(const OptionsMap& options, Color side) {
+    return int(options[side == WHITE ? "Red Fast Win" : "Black Fast Win"]) != 0;
+}
+
 // (*Scalers):
 // The values with Scaler asterisks have proven non-linear scaling.
 // They are optimized to time controls of 180 + 1.8 and longer,
@@ -227,6 +231,8 @@ void Search::Worker::start_searching() {
     if (!limits.depth)
         bestThread = threads.get_best_thread()->worker.get();
 
+    const bool fastWin = fast_win_enabled(options, rootPos.side_to_move());
+
     main_manager()->bestPreviousScore        = bestThread->rootMoves[0].score;
     main_manager()->bestPreviousAverageScore = bestThread->rootMoves[0].averageScore;
 
@@ -237,6 +243,13 @@ void Search::Worker::start_searching() {
     // Send PV info if it has changed since last output in iterative_deepening().
     if (!uciPvSent || bestThread != this)
         main_manager()->output_pv(*bestThread, threads, tt, bestThread->rootDepth);
+
+    if (fastWin)
+        sync_cout << "info string Fast Win "
+                  << (rootPos.side_to_move() == WHITE ? "Red: " : "Black: ")
+                  << (is_win(bestThread->rootMoves[0].score) ? "shortest proven mate"
+                                                            : "safe mode, standard best move")
+                  << sync_endl;
 
     std::string ponder;
     if (bestThread->rootMoves[0].pv.size() > 1)

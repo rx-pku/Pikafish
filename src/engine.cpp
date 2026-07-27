@@ -103,6 +103,18 @@ Engine::Engine(std::optional<std::filesystem::path> path) :
     options.add(  //
       "MultiPV", Option(1, 1, MAX_MOVES));
 
+    options.add(
+      "Red Fast Win",
+      Option(false, [](const Option& o) {
+          return std::string("Red Fast Win: ") + (int(o) ? "enabled" : "disabled");
+      }));
+
+    options.add(
+      "Black Fast Win",
+      Option(false, [](const Option& o) {
+          return std::string("Black Fast Win: ") + (int(o) ? "enabled" : "disabled");
+      }));
+
     options.add("Move Overhead", Option(10, 0, 5000));
 
     options.add("nodestime", Option(0, 0, 10000));

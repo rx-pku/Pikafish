@@ -44,6 +44,16 @@ Pikafish with it.
 
 See also the Pikafish [documentation][wiki-usage-link] for further usage help.
 
+## macOS GUI in this fork
+
+This fork adds a native AppKit xiangqi GUI for macOS in [`macos-gui`](./macos-gui).
+It supports human or engine control for either side, setup positions, undo,
+board rotation, clocks, move history, engine analysis and guidance arrows.
+
+The application uses a wood board, jade-style pieces, move sounds and a
+reproducible build script. See the [macOS GUI README](./macos-gui/README.md)
+for screenshots, feature details and build instructions.
+
 ## Files
 
 This distribution of Pikafish consists of the following files:

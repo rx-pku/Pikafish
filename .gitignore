@@ -19,3 +19,8 @@ tsan.supp
 __pycache__/
 tests/syzygy
 tests/bench_tmp.epd
+
+# Local macOS GUI builds and recovered working assets
+build/
+dist/
+gui-assets/

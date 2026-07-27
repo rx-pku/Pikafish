@@ -1,0 +1,15 @@
+Pikafish move and capture sounds
+
+Source: "chess pieces.wav" by simone_ds
+URL: https://freesound.org/people/simone_ds/sounds/366065/
+License: Creative Commons CC0 1.0 Universal
+
+The application clips two individual wooden chess-piece impacts from the
+recording and applies light equalization, dynamics, limiting, and fades.
+
+Pickup sound source: "Chess Pieces Move (Close)" by JJTaynos
+URL: https://freesound.org/people/JJTaynos/sounds/733927/
+License: Creative Commons CC0 1.0 Universal
+
+The pickup cue is clipped from a quiet close-miked chess-piece movement and
+lightly processed for clarity.
