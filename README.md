@@ -50,9 +50,30 @@ This fork adds a native AppKit xiangqi GUI for macOS in [`macos-gui`](./macos-gu
 It supports human or engine control for either side, setup positions, undo,
 board rotation, clocks, move history, engine analysis and guidance arrows.
 
+![Pikafish macOS GUI](./macos-gui/Screenshot.png)
+
 The application uses a wood board, jade-style pieces, move sounds and a
-reproducible build script. See the [macOS GUI README](./macos-gui/README.md)
-for screenshots, feature details and build instructions.
+reproducible build script.
+
+### UI quick start / 界面快速上手
+
+1. 运行 `./macos-gui/build-app.sh`，然后打开
+   `./build/macos-gui/Pikafish.app`。
+2. “双方控制”中，红方和黑方可分别设为玩家或电脑；切换控制方不会重置
+   当前棋盘、着法记录和计时。
+3. 玩家走棋时先点击己方棋子提子，再点击目标位置落子。非法着法会自动
+   放回原位。
+4. “思考”可选择预设秒数、输入 `0.1` 至 `600` 秒，或选择“无限分析”；
+   “指导”开关只显示候选线路和箭头，不会替玩家落子。
+5. “进入中残局布局”可自由移动、添加或删除棋子，并选择布局完成后由
+   哪一方先走。
+6. 右侧记分板显示双方累计用时、局面评分和胜率估算；计时器只计时，
+   不会因超时判负，并在对局结束时停止。
+7. 使用“悔棋”“悔至起点”和“旋转棋盘”管理当前对局；日志板可切换
+   查看可读着法、引擎日志和指导建议。
+
+See the [complete macOS GUI usage guide](./macos-gui/README.md) for detailed
+instructions, feature notes and build options.
 
 ## Files
 
